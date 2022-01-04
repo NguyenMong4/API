@@ -230,5 +230,29 @@ namespace MultipleDbContextDemo.DemoProductCategory
 
 
         }
+
+        public void UpdateAt(UpdateProductCategory input)
+        {
+            try
+            {
+                DemoProductCategorys db = new DemoProductCategorys
+                {
+                    Name = input.Name
+                };
+
+                var Name = new SqlParameter("@Name", db.Name);
+
+               var query =
+                    "UPDATE DemoProductCategory SET UpdateAt = GetDate() WHERE exists(select *from DemoProductCategory where NAME = @NAME)" +
+                    "IF @@ROWCOUNT=0 INSERT INTO DemoProductCategory(NAME,Active) VALUES(@NAME,1)";
+
+                _mySecondatacontext.GetDbContext().Database.ExecuteSqlCommand(query, Name);
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+
+        }
     }
 }

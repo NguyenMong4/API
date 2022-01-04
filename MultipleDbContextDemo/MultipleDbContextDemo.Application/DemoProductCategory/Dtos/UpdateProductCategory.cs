@@ -14,5 +14,7 @@ namespace MultipleDbContextDemo.DemoProductCategory.Dtos
         public string Name { get; set; }
         [Required]
         public bool Active { get; set; }
+
+        public DateTime? UpdateAt { get; set; }
     }
 }

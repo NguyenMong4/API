@@ -11,7 +11,7 @@ namespace MultipleDbContextDemo.DemoProductCategory
 {
     public interface IDemoProductCategoryAppService : IApplicationService
     {
-
+        void UpdateAt(UpdateProductCategory input);
         List<DemoProductCategorys> GetProduct();
         void CreateProduct(CreateProductCategory input);
         void Update(UpdateProductCategory input);
