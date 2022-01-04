@@ -8,17 +8,15 @@ using Abp.UI;
 using Abp.EntityFramework;
 
 using MultipleDbContextDemo.DemoProductCategory.Dtos;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace MultipleDbContextDemo.DemoProductCategory
 {
     public class DemoProductCategoryAppService : MultipleDbContextDemoAppServiceBase, IDemoProductCategoryAppService
     {
         private readonly IRepository<DemoProductCategorys> _productcategoryRepository;
-        //private readonly string _connection;
-
         private readonly IDbContextProvider<MySecondDbContext> _mySecondatacontext;
-
-
 
         public DemoProductCategoryAppService(IRepository<DemoProductCategorys> productcatgoryRepository, IDbContextProvider<MySecondDbContext> dbContextProvider)
 
@@ -209,6 +207,27 @@ namespace MultipleDbContextDemo.DemoProductCategory
             {
                 throw;
             }
+
+        }
+
+        public async Task<Result> Delete(int id)
+        {
+            try
+            {
+                var productcategory = await _productcategoryRepository.FirstOrDefaultAsync(id);
+                if (productcategory != null)
+                {
+                    throw new Exception("productcategory null");
+                }
+                await _productcategoryRepository.DeleteAsync(productcategory);
+                Result r = new Result();
+                return r;
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+
 
         }
     }

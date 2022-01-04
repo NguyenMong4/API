@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace MultipleDbContextDemo.DemoProductCategory
 {
@@ -15,6 +16,8 @@ namespace MultipleDbContextDemo.DemoProductCategory
         void CreateProduct(CreateProductCategory input);
         void Update(UpdateProductCategory input);
         int DeleteProductCategory(int id);
+        [HttpGet]
+        Task<Result> Delete(int id);
         void CreateProductCategoryLinQ(CreateProductCategory input);
         void UpdateProductCategoryLinQ(UpdateProductCategory input);
         int DeleteLinQ(int id);

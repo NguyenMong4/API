@@ -7,14 +7,15 @@ namespace MultipleDbContextDemo.EntityFramework
 {
     public class MySecondDbContext : AbpDbContext
     {
-        public virtual IDbSet<Course> Courses { get; set; }       
+        public virtual IDbSet<Course> Courses { get; set; }
         public virtual IDbSet<DemoProductCategorys> DemoProductCategorys { get; set; }
-      
+        public virtual IDbSet<DemoProducts> DemoProducts { get; set; }
+
 
         public MySecondDbContext()
             : base("Second")
         {
-            
+
         }
     }
 }

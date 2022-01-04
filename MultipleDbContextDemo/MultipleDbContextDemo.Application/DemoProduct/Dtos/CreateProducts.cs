@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Application.Services.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace MultipleDbContextDemo.DemoProduct
 {
-    public class CreateProducts
+    public class CreateProducts:EntityDto<int>
     {
-        [Required]
-        public int Id { get; set; }
+        
         [Required]
         public int CategoryId { get; set; }
         [Required]
